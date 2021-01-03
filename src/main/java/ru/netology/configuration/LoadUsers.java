@@ -18,7 +18,6 @@ public class LoadUsers {
 
   @Bean
   public CommandLineRunner initUsers(UserRepository repository) {
-
     return args -> {
       log.info("Preloading " + repository.save(new User("john", "doe", Arrays.asList(Authorities.values()))));
       log.info("Preloading " + repository.save(new User("vasiliy", "pupkin", Arrays.asList(Authorities.READ, Authorities.WRITE))));
