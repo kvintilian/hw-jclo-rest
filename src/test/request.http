@@ -1,0 +1,14 @@
+GET localhost:8080/authorize?user=john&password=doe
+
+###
+
+GET localhost:8080/authorize?user=john&password=
+
+###
+
+GET localhost:8080/authorize?user=john&password=1234
+# Unknown user john, так как такого пользователя с таким паролем несуществует
+
+###
+
+GET localhost:8080/authorize?user=johny&password=1234
