@@ -1,14 +1,24 @@
 package ru.netology.model;
 
-import java.util.ArrayList;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class User {
 
+  @NotNull
+  @NotEmpty
+  @NotBlank
   private final String user;
+
+  @NotNull
+  @NotEmpty
+  @NotBlank
   private final String password;
+
   private final List<Authorities> authorities;
 
   public User(String user, String password) {
