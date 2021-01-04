@@ -13,8 +13,8 @@ public class UserRepository {
 
   private final List<User> users = new CopyOnWriteArrayList<>();
 
-  public List<Authorities> getUserAuthorities(String user, String password) {
-    int userIndex = users.indexOf(new User(user, password));
+  public List<Authorities> getUserAuthorities(User user) {
+    int userIndex = users.indexOf(user);
     return userIndex != -1 ? users.get(userIndex).getAuthorities() : Collections.emptyList();
   }
 

@@ -11,6 +11,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import ru.netology.exception.InvalidCredentials;
 import ru.netology.exception.UnauthorizedUser;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolationException;
+import java.io.IOException;
 import java.util.Arrays;
 
 @ControllerAdvice
@@ -26,6 +29,11 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     Logger log = LoggerFactory.getLogger(UnauthorizedUser.class);
     log.error(ex.getMessage());
     return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+  }
+
+  @ExceptionHandler(ConstraintViolationException.class)
+  protected ResponseEntity<String> constraintViolationException(ConstraintViolationException ex, WebRequest request) {
+    return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler()
