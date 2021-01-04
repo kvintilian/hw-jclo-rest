@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  springbootrest:
+    build: ./
+    ports:
+      - "88:8080"
